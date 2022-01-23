@@ -4,7 +4,7 @@ import csv
 import shutil
 from os.path import exists
 
-output = 'data/'
+output = 'data/training/'
 
 
 def save_image(URL, PATH):
@@ -20,7 +20,8 @@ with open("inital_training_data.csv", "w") as f2:
     with open("birb.csv", "r", encoding='utf-8-sig') as f:
         reader = csv.reader(f)
         for i, line in enumerate(reader):
-            path = output +f"{str(uuid.uuid5(uuid.NAMESPACE_DNS, line[0]))}.jpg"
+            name = f"{str(uuid.uuid5(uuid.NAMESPACE_DNS, line[0]))}.jpg"
+            path = output + name
             label = line[1]
 
             if exists(path):
@@ -29,5 +30,5 @@ with open("inital_training_data.csv", "w") as f2:
             else:
                 print(f"[{str(i)}][+] Saving Image of a {label} to {path}")
                 save_image(line[0].strip(), path)
-            f2.write(f"{path}, {label}\n")
+            f2.write(f"{name}, {label}\n")
             f2.flush()
