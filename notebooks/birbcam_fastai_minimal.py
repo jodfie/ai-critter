@@ -4,6 +4,7 @@ import pandas as pd
 # Table of labels: columns "fname" and "labels"
 df = pd.read_csv("inital_training_data.csv")
 path = Path("data/")
+print(df.head())
 
 # Create our data loader for training and validation, with automatic image
 # resizing, cropping, and data augmentation (flips, rotation, skew, etc.).

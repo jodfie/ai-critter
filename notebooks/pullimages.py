@@ -23,6 +23,8 @@ with open("inital_training_data.csv", "w") as f2:
             name = f"{str(uuid.uuid5(uuid.NAMESPACE_DNS, line[0]))}.jpg"
             path = output + name
             label = line[1]
+            f2.write(f"{name}, {label}\n")
+            f2.flush()
 
             if exists(path):
                 print(f"[{str(i)}][-] I already have this image - {path}")
@@ -30,5 +32,3 @@ with open("inital_training_data.csv", "w") as f2:
             else:
                 print(f"[{str(i)}][+] Saving Image of a {label} to {path}")
                 save_image(line[0].strip(), path)
-            f2.write(f"{name}, {label}\n")
-            f2.flush()
