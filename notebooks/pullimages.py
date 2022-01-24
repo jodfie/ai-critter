@@ -23,7 +23,7 @@ with open("inital_training_data.csv", "w") as f2:
             name = f"{str(uuid.uuid5(uuid.NAMESPACE_DNS, line[0]))}.jpg"
             path = output + name
             label = line[1]
-            f2.write(f"{name}, {label}\n")
+            f2.write(f"{name},{label}\n")
             f2.flush()
 
             if exists(path):

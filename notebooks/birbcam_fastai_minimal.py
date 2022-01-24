@@ -11,7 +11,7 @@ print(df.head())
 dls = ImageDataLoaders.from_df(df, path, folder='training', label_delim=',',
                                item_tfms=Resize(224), 
                                batch_tfms=aug_transforms(size=224))
-dls.show_batch()
+
 # Create our model, with pretrained ResNet 34 weights
 learn = cnn_learner(dls, resnet34, metrics=partial(accuracy_multi, thresh=0.5))
 
