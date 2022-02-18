@@ -1,18 +1,505 @@
 {
-    "sparrow": {
-        "species": "Passer domesticus",
-        "taxa_id": 13858
-    },
-    "chickadee": {
-        "species": "Poecile atricapillus",
-        "taxa_id": 144815
-    },
-    "magpie": {
-        "species": "Pica hudsonia",
-        "taxa_id": 143853
-    },
-    "squirrel": {
-        "species": "Sciurus carolinensis",
-        "taxa_id": 46017
-    }
+	"American crow": 
+	{
+		"species": "Corvus brachyrhynchos",
+		"taxa_id": 8021
+	},
+	
+	"American goldfinch": 
+	{
+		"species": "Carduelis tristis",
+		"taxa_id": 145310
+	},
+	
+	"American robin":
+	{
+		"species": "Turdus migratorius",
+		"taxa_id": 12727
+	},
+	
+	"American kestrel":
+	{
+		"species": "Falco sparverius",
+		"taxa_id": 4665
+	},
+	
+	"baltimore oriole":
+	{
+		"Common Name": "baltimore oriole",
+		"species": "Icterus galbula",
+		"taxa_id": 9346
+	},
+	
+	"black-chinned hummingbird":
+	{
+		"species": "Archilochus alexandri",
+		"taxa_id": 6433
+	},
+	
+	"barn swallow":
+	{
+		"species": "Hirundo rustica",
+		"taxa_id": 11901
+	},
+	
+	"blue jay":
+	{
+		"species": "Cyanocitta cristata",
+		"taxa_id": 8229
+	},
+	
+	"Brewer's blackbird":
+	{
+		"species": "Euphagus cyanocephalus",
+		"taxa_id": 10325
+	},
+	
+	"brown creeper":
+	{
+		"species": "Certhia americana",
+		"taxa_id": 7458
+	},
+	
+	"blue-gray gnatcatcher":
+	{
+		"species": "Polioptila caerulea",
+		"taxa_id": 7493
+	},
+	
+	"boat-tailed grackle":
+	{
+		"species": "Quiscalus major",
+		"taxa_id": 9601
+	},
+	
+	"brown thrasher":
+	{
+		"species": "Toxostoma rufum",
+		"taxa_id": 14898
+	},
+	
+	"brown-headed cowbird": 
+	{
+		"species": "Molothrus ater",
+		"taxa_id": 10373
+	},
+	
+	"brown-headed nuthatch": 
+	{
+		"species": "Sitta pusilla",
+		"taxa_id": 14825
+	},
+	"carolina chickadee": 
+	{
+		"species": "Poecile carolinensis",
+		"taxa_id": 144814
+	},
+	
+	"carolina wren":
+	{
+		"species": "Thryothorus ludovicianus",
+		"taxa_id": 7513
+	},
+	
+	"cedar waxwing":
+	{
+		"Common Name": "cedar waxwing",
+		"species": "Bombycilla cedrorum",
+		"taxa_id": 7428
+	},
+	
+	"chipping sparrow":
+	{
+		"species": "Spizella passerina",
+		"taxa_id": 9135
+	},
+	
+	"common grackle":
+	{
+		"species": "Quiscalus quiscula",
+		"taxa_id": 9602
+	},
+	
+	"common ground-dove":
+	{
+		"species": "Columbina passerina",
+		"taxa_id": 3545
+	},
+	
+	"common nighthawk":
+	{
+		"species": "Chordeiles minor",
+		"taxa_id": 19577
+	},
+	
+	"raven":
+	{
+		"species": "Corvus corax",
+		"taxa_id": 8010
+	},
+	
+	"Cooper's hawk":
+	{
+		"species": "Accipiter cooperii",
+		"taxa_id": 5112
+	},
+	
+	"dark-eyed junco":
+	{
+		"species": "Junco hyemalis",
+		"taxa_id": 10094
+	},
+	
+	"downy woodpecker":
+	{
+		"species": "Picoides pubescens",
+		"taxa_id": 792988
+	},
+	
+	"eastern bluebird":
+	{
+		"species": "Sialia sialis",
+		"taxa_id": 12942
+	},
+	
+	"eastern meadowlark":
+	{
+		"species": "Sturnella magna",
+		"taxa_id": 9528
+	},
+	
+	"eastern phoebe":
+	{
+		"species": "Sayornis phoebe",
+		"taxa_id": 17008
+	},
+	
+	"eastern towhee":
+	{
+		"species": "Pipilo erythrophthalmus",
+		"taxa_id": 9424
+	},
+	
+	"eastern screech-owl":
+	{
+		"species": "Megascops asio",
+		"taxa_id": 19765
+	},
+	
+	"Eurasian collared-dove":
+	{
+		"species": "Streptopelia decaocto",
+		"taxa_id": 2969
+	},
+	
+	"European starling":
+	{
+		"species": "Sturnus vulgaris",
+		"taxa_id": 14850
+	},
+	
+	"evening grosbeak":
+	{
+		"species": "Coccothraustes vespertinus",
+		"taxa_id": 9800
+	},
+	
+	"field sparrow":
+	{
+		"species": "Spizella pusilla",
+		"taxa_id": 9152
+	},
+	
+	"fish crow":
+	{
+		"species": "Corvus ossifragus",
+		"taxa_id": 8001
+	},
+	
+	"fox sparrow":
+	{
+		"species": "Passerella iliaca",
+		"taxa_id": 9156
+	},
+	
+	"golden-crowned kinglet":
+	{
+		"species": "Regulus satrapa",
+		"taxa_id": 11700
+	},
+	
+	"gray catbird":
+	{
+		"species": "Dumetella carolinensis",
+		"taxa_id": 14995
+	},
+	
+	"great crested flycatcher":
+	{
+		"species": "Myiarchus crinitus",
+		"taxa_id": 16028
+	},
+	
+	"hairy woodpecker":
+	{
+		"species": "Picoides villosus",
+		"taxa_id": 792900
+	},
+	
+	"Harris's sparrow":
+	{
+		"species": "Zonotrichia querula",
+		"taxa_id": 9182
+	},
+	
+	"hermit thrush":
+	{
+		"species": "Catharus guttatus",
+		"taxa_id": 12890
+	},
+	
+	"house finch":
+	{
+		"species": "Carpodacus mexicanus",
+		"taxa_id": 199840
+	},
+	
+	"house sparrow":
+	{
+		"species": "Passer domesticus",
+		"taxa_id": 13858
+	},
+	
+	"house wren":
+	{
+		"species": "Troglodytes aedon",
+		"taxa_id": 7562
+	},
+	
+	"inca dove":
+	{
+		"species": "Columbina inca",
+		"taxa_id": 3544
+	},
+	
+	"indigo bunting":
+	{
+		"species": "Passerina cyanea",
+		"taxa_id": 10227
+	},
+	
+	"killdeer":
+	{
+		"species": "Charadrius vociferus",
+		"taxa_id": 4793
+	},
+	
+	"mourning dove":
+	{
+		"species": "Zenaida macroura",
+		"taxa_id": 3454
+	},
+	
+	"northern bobwhite":
+	{
+		"species": "Colinus virginianus",
+		"taxa_id": 1280
+	},
+	
+	"northern cardinal":
+	{
+		"species": "Cardinalis cardinalis",
+		"taxa_id": 9083
+	},
+	
+	"northern flicker":
+	{
+		"species": "Colaptes auratus",
+		"taxa_id": 18236
+	},
+	
+	"northern mockingbird":
+	{
+		"species": "Mimus polyglottos",
+		"taxa_id": 14886
+	},
+	
+	"painted bunting":
+	{
+		"species": "Passerina ciris",
+		"taxa_id": 10224
+	},
+	
+	"palm warbler":
+	{
+		"species": "Dendroica palmarum",
+		"taxa_id": 145242
+	},
+	
+	"pileated woodpecker":
+	{
+		"species": "Dryocopus pileatus",
+		"taxa_id": 17855
+	},
+	
+	"pine siskin":
+	{
+		"species": "Carduelis pinus",
+		"taxa_id": 145304
+	},
+	
+	"pine warbler":
+	{
+		"species": "Dendroica pinus",
+		"taxa_id": 145244
+	},
+	
+	"purple finch":
+	{
+		"species": "Carpodacus purpureus",
+		"taxa_id": 199841
+	},
+	
+	"purple martin":
+	{
+		"species": "Progne subis",
+		"taxa_id": 11867
+	},
+	
+	"red crossbill":
+	{
+		"species": "Loxia curvirostra",
+		"taxa_id": 10411
+	},
+	
+	"red-bellied woodpecker":
+	{
+		"species": "Melanerpes carolinus",
+		"taxa_id": 18205
+	},
+	
+	"red-breasted nuthatch":
+	{
+		"species": "Sitta canadensis",
+		"taxa_id": 14823
+	},
+	
+	"red-eyed vireo": {
+		"species": "Vireo olivaceus",
+		"taxa_id": 891704
+	},
+	
+	"red-headed woodpecker":
+	{
+		"species": "Melanerpes erythrocephalus",
+		"taxa_id": 18204
+	},
+	
+	"red-winged blackbird":
+	{
+		"species": "Agelaius phoeniceus",
+		"taxa_id": 9744
+	},
+	
+	"rock dove":
+	{
+		"species": "Columba livia",
+		"taxa_id": 3017
+	},
+	
+	"rose-breasted grosbeak":
+	{
+		"species": "Pheucticus ludovicianus",
+		"taxa_id": 10271
+	},
+	
+	"ruby-crowned kinglet":
+	{
+		"species": "Regulus calendula",
+		"taxa_id": 117095
+	},
+	
+	"ruby-throated hummingbird":
+	{
+		"species": "Archilochus colubris",
+		"taxa_id": 6432
+	},
+	
+	"rufous hummingbird":
+	{
+		"species": "Selasphorus rufus",
+		"taxa_id": 6363
+	},
+	
+	"sharp-shinned hawk":
+	{
+		"species": "Accipiter striatus",
+		"taxa_id": 5097
+	},
+	
+	"song sparrow":
+	{
+		"species": "Melospiza melodia",
+		"taxa_id": 9100
+	},
+	
+	"tree swallow":
+	{
+		"species": "Tachycineta bicolor",
+		"taxa_id": 11935
+	},
+	
+	"tufted titmouse":
+	{
+		"species": "Baeolophus bicolor",
+		"taxa_id": 13632
+	},
+	
+	"white-breasted nuthatch":
+	{
+		"species": "Sitta carolinensis",
+		"taxa_id": 14801
+	},
+	
+	"white-crowned sparrow":
+	{
+		"species": "Zonotrichia leucophrys",
+		"taxa_id": 9176
+	},
+	
+	"white-throated sparrow":
+	{
+		"species": "Zonotrichia albicollis",
+		"taxa_id": 9184
+	},
+	
+	"white-winged dove":
+	{
+		"species": "Zenaida asiatica",
+		"taxa_id": 3460
+	},
+	
+	"wood thrush":
+	{
+		"species": "Hylocichla mustelina",
+		"taxa_id": 13270
+	},
+	
+	"yellow-bellied sapsucker":
+	{
+		"species": "Sphyrapicus varius",
+		"taxa_id": 18463
+	},
+	
+	"yellow-rumped warbler":
+	{
+		"species": "Dendroica coronata",
+		"taxa_id": 145245
+	},
+	
+	"yellow-throated warbler":
+	{
+		"species": "Dendroica dominica",
+		"taxa_id": 145246
+	}
 }
