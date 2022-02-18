@@ -1,14 +1,16 @@
+##### Python Section #####
+
 #Python Venv
 venv/*
-
-# Logs
-camera-app/log.txt
 
 # Pycache
 camera-app/__pycache__/*
 camera-app/tests/__pycache__/*
 webapp/birbcam-app/__pycache__/*
 notebooks/__pycache__/*
+#################################
+
+##### AI Model Data Section #####
 
 # Images
 imgs/*.jpg
@@ -20,9 +22,9 @@ notebooks/data/training/*.jpg
 # Models
 models/*
 
-#Data
-# Ignore everything in this directory
+# Data
 data/*
+data/species_map.json
 # Except these files
 !.gitignore
 !db_schema.sql
@@ -30,9 +32,15 @@ data/*
 
 # Jupyter notebook checkpoints
 notebooks/.ipynb_checkpoints/*
+################################
+
+##### Testing Section #####
 
 # Tests
 camera-app/tests/test_assets/*
+###############################
+
+##### Secrets Section #####
 
 # Secrets
 */secrets.py
@@ -40,3 +48,5 @@ camera-app/tests/test_assets/*
 */client_secrets.json
 */env_params.sh
 settings.env
+#############################
+
