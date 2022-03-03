@@ -1,2 +1,3 @@
-git+https://github.com/pytorch/vision.git@v0.9.0
+git
+https://github.com/pytorch/vision.git@v0.9.0
 https://github.com/fastai/fastai/archive/2.1.6.tar.gz
