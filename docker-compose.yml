@@ -2,6 +2,7 @@
 version: '3.7'
 services:
   camera:
+    container_name: "ai-critter-cam"
     build: 
       context: ./camera-app
     image: birbcam/camera
@@ -21,9 +22,10 @@ services:
     # runtime: "nvidia"
     env_file:
       - settings.env
-    restart: always
+    restart: unless-stopped
 
   webapp:
+    container_name: "ai-critter-web"
     build:
       context: ./webapp
     image: birbcam/webapp
@@ -44,4 +46,14 @@ services:
       - BIRBCAM_PATH=/app
       - DATA_DIR=/data
     # runtime: "nvidia"
-    restart: always
+    restart: unless-stopped
+    
+  yacht:
+    container_name: yacht
+    image: selfhostedpro/yacht
+    ports:
+      - 8000:8000
+    volumes:
+      - /yacht:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
