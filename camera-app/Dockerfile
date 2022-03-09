@@ -7,5 +7,5 @@ RUN pip install --upgrade cython
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 # Packages below are built from git
-ADD requirements_extra.txt requirements_extra.txt
-RUN pip install -r requirements_extra.txt
+ADD requirements_ncs.txt requirements_ncs.txt
+RUN pip install -r requirements_ncs.txt

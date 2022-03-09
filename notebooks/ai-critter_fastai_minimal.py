@@ -18,11 +18,11 @@ learn = cnn_learner(dls, resnet34, metrics=partial(accuracy_multi, thresh=0.5))
 # Find a good learning rate to use while training
 learn.lr_find()
 
-# Train our model using mixup a futher augmentation that blends images and 
+# Train our model using mixup for futher augmentation that blends images and
 # labels together to create hybrid images. Often improves performance
 mixup = MixUp(1.)
 learn.fine_tune(10, 3e-2, cbs=mixup)
 
 # Export the model for use in production
-learn.export("birbcam_prod.pkl")
+learn.export("ai_critter_prod.pkl")
 

@@ -18,7 +18,11 @@ import sqlite3
 import time
 import traceback
 from fastai.vision.all import *
+#import pathlib #only on windows
 
+#only for windows dev
+#temp = pathlib.PosixPath
+#pathlib.PosixPath = pathlib.WindowsPath
 
 # Set up logging
 logging.basicConfig(
@@ -30,12 +34,12 @@ logging.basicConfig(
     ]
 )
 
-PROJECT_PATH = os.getenv("BIRBCAM_PATH", "../")
+PROJECT_PATH = os.getenv("AI_CRITTER_PATH", "../")
 DATA_DIR = os.getenv("DATA_DIR", os.path.join(PROJECT_PATH, "data/"))
 ROTATE_CAMERA = os.getenv("ROTATE_CAMERA", False)
 CUSTOM_TIMEZONE = os.getenv("CUSTOM_TIMEZONE",  tzlocal())
-BIRBCAM_LATITUDE = float(os.getenv("BIRBCAM_LATITUDE", "51.049999"))
-BIRBCAM_LONGITUDE = float(os.getenv("BIRBCAM_LONGITUDE", "-114.066666"))
+AI_CRITTER_LATITUDE = float(os.getenv("AI_CRITTER_LATITUDE", "51.049999"))
+AI_CRITTER_LONGITUDE = float(os.getenv("AI_CRITTER_LONGITUDE", "-114.066666"))
 LOCATION_NAME = os.getenv("LOCATION", "Calgary")
 REGION_NAME = os.getenv("REGION_NAME", "Canada")
 MIN_CORRECT_CONF = os.getenv("MIN_CORRECT_CONF", 0.75)
@@ -45,7 +49,7 @@ MIN_UNREVIEWED_CONF = os.getenv("MIN_UNREVIEWED_CONF", 0.9)
 DB_PATH = os.getenv('DB_PATH', '../data/model_results.db')
 
 # Model artifact path
-MODEL_PATH = os.getenv('MODEL_PATH', '../models/birbcam_prod.pkl')
+MODEL_PATH = os.getenv('MODEL_PATH', '../data/ai_critter_prod.pkl')
 
 # Timezone for python datetime objects
 if isinstance(CUSTOM_TIMEZONE, str):
@@ -63,18 +67,18 @@ save_dir = os.path.join(DATA_DIR, 'imgs/')
 # Make the save dir if it doesn't exist
 os.makedirs(save_dir, exist_ok=True)
 
-# Create the Videoapture object for the webcam
+# Create the Video Capture object for the webcam
 capture = cv.VideoCapture()
 capture.set(cv.CAP_PROP_FPS, 1)
 
 # Create the astral city location object
-city = LocationInfo(LOCATION_NAME, REGION_NAME, tz, BIRBCAM_LATITUDE, BIRBCAM_LONGITUDE) 
+city = LocationInfo(LOCATION_NAME, REGION_NAME, tz, AI_CRITTER_LATITUDE, AI_CRITTER_LONGITUDE)
 
 
 def camera_loop(queue, stop_time):
     # Model params
     # https://docs.opencv.org/master/d1/dc5/tutorial_background_subtraction.html
-    mask_thresh = 255   # Threhold for foreground mask: 255 indicates objects
+    mask_thresh = 255   # Threshold for foreground mask: 255 indicates objects
     kernel_size = 25    # nxn kernel size for 2d median filter on foreground mask
     lr = 0.05           # learning rate for the background sub model
     burn_in = 30        # frames of burn in for the background sub model
@@ -167,7 +171,7 @@ def main_loop(queue):
             
             # If current time is less than dawn today, then wait until then
             if current_time < today_start:
-                logging.info(f'Delaying the cature of images until dawn at {today_start:{dt_fmt}}')
+                logging.info(f'Delaying the capture of images until dawn at {today_start:{dt_fmt}}')
                 night_pause_loop(today_start)
             
             # We can capture images, start the camera loop until sunset today
@@ -179,7 +183,7 @@ def main_loop(queue):
             elif current_time > today_end:
                 tomorrow_sun_times = sun(city.observer, date=dt.datetime.now(tz=tz) + dt.timedelta(days=1), tzinfo=tz)
                 tomorrow_start = tomorrow_sun_times['dawn']
-                logging.info(f'Delaying the cature of images until dawn at {tomorrow_start:{dt_fmt}}')
+                logging.info(f'Delaying the capture of images until dawn at {tomorrow_start:{dt_fmt}}')
                 night_pause_loop(tomorrow_start)
         except Exception as e:
             logging.error(traceback.format_exc())

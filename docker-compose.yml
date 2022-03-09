@@ -5,7 +5,7 @@ services:
     container_name: "ai-critter-cam"
     build: 
       context: ./camera-app
-    image: birbcam/camera
+    image: ai-critter/camera
     init: true
     volumes:
       - ./camera-app/:/usr/app/
@@ -13,11 +13,11 @@ services:
       - ./data/:/data/
     devices:
       - /dev/video0:/dev/video0
-    command: python3 /usr/app/birbcam.py
+    command: python3 /usr/app/ai-critter.py
     environment:
       - DB_PATH=/data/model.db
-      - MODEL_PATH=/data/birbcam_prod.pkl
-      - BIRBCAM_PATH=/usr/app
+      - MODEL_PATH=/data/ai_critter_prod.pkl
+      - AI-CRITTER_PATH=/usr/app
       - DATA_DIR=/data
     # runtime: "nvidia"
     env_file:
@@ -28,12 +28,12 @@ services:
     container_name: "ai-critter-web"
     build:
       context: ./webapp
-    image: birbcam/webapp
+    image: ai-critter/webapp
     init: true
     command: flask run --host=0.0.0.0
     working_dir: /app
     volumes:
-      - ./webapp/birbcam-app:/app
+      - ./webapp/ai-critter-app:/app
       - ./data/:/data/
     ports:
       - "8080:5000"
@@ -42,8 +42,8 @@ services:
     environment:
       - DB_PATH=/data/model.db
       - FLASK_APP=app.py
-      - MODEL_PATH=/data/birbcam_prod.pkl
-      - BIRBCAM_PATH=/app
+      - MODEL_PATH=/data/ai_critter_prod.pkl
+      - AI-CRITTER_PATH=/app
       - DATA_DIR=/data
     # runtime: "nvidia"
     restart: unless-stopped

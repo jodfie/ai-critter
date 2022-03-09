@@ -6,7 +6,7 @@ venv/*
 # Pycache
 camera-app/__pycache__/*
 camera-app/tests/__pycache__/*
-webapp/birbcam-app/__pycache__/*
+webapp/ai-critter-app/__pycache__/*
 notebooks/__pycache__/*
 #################################
 
@@ -16,7 +16,7 @@ notebooks/__pycache__/*
 imgs/*.jpg
 imgs/training/*.jpg
 camera-app/tests/test_temp/*
-webapp/birbcam-app/static/imgs
+webapp/ai-critter-app/static/imgs
 notebooks/data/training/*.jpg
 
 # Models

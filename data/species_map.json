@@ -25,7 +25,6 @@
 	
 	"baltimore oriole":
 	{
-		"Common Name": "baltimore oriole",
 		"species": "Icterus galbula",
 		"taxa_id": 9346
 	},
@@ -103,7 +102,6 @@
 	
 	"cedar waxwing":
 	{
-		"Common Name": "cedar waxwing",
 		"species": "Bombycilla cedrorum",
 		"taxa_id": 7428
 	},

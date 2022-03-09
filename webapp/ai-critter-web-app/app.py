@@ -14,15 +14,15 @@ from pyinaturalist.rest_api import get_access_token, create_observation, update_
 import os
 
 # Environment variables for configuration
-PROJECT_PATH = os.getenv("BIRBCAM_PATH", "../")
+PROJECT_PATH = os.getenv("AI_CRITTER_PATH", "../")
 DATA_DIR = os.getenv("DATA_DIR", os.path.join(PROJECT_PATH, "data/"))
-INAT_ENABLED = bool(os.getenv('BIRBCAM_INAT_ENABLED', 'False'))
+INAT_ENABLED = bool(os.getenv('AI-CRITTER_INAT_ENABLED', 'False'))
 INAT_USERNAME = os.getenv('INAT_USERNAME', '')
 INAT_PASSWORD = os.getenv('INAT_PASSWORD', '')
 INAT_APP_ID = os.getenv('INAT_APP_ID', '')
 INAT_APP_SECRET = os.getenv('INAT_APP_SECRET', '')
-INAT_LATITUDE = float(os.getenv("BIRBCAM_LATITUDE", "51.03128580819969"))
-INAT_LONGITUDE = float(os.getenv("BIRBCAM_LONGITUDE", "-114.10264233236377"))
+INAT_LATITUDE = float(os.getenv("AI_CRITTER_LATITUDE", "51.03128580819969"))
+INAT_LONGITUDE = float(os.getenv("AI_CRITTER_LONGITUDE", "-114.10264233236377"))
 INAT_POSITIONAL_ACCURACY = float(os.getenv("INAT_POSITIONAL_ACCURACY", "3"))
 DB_PATH = os.getenv('DB_PATH', '../data/model_results.db')
 
@@ -133,9 +133,9 @@ def inaturalist_api():
             response = create_observation(
                 taxon_id=species_map[obs_label]['taxa_id'],
                 observed_on_string=obs_timestamp,
-                time_zone='Mountain Time (US & Canada)',
-                description='Birb Cam image upload: https://github.com/evjrob/birbcam',
-                tag_list=f'{obs_label}, Canada',
+                time_zone='Eastern Time (US & Canada)',
+                description='AI Critter image upload: ',
+                tag_list=f'{obs_label}, United States',
                 latitude=INAT_LATITUDE,
                 longitude=INAT_LONGITUDE,
                 positional_accuracy=INAT_POSITIONAL_ACCURACY, # meters,
@@ -263,7 +263,7 @@ def label_revise_page():
         img_fn = row[1]
         label = row[2]
 
-        # Read the image and histogram nomalize it
+        # Read the image and histogram normalize it
         img = cv.imread(f'{DATA_DIR}/imgs/{img_fn}')
         if img is None:
             print(utc_key)

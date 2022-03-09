@@ -1,8 +1,8 @@
 help:
-	@echo 'Makefile for birbcam                                                      '
+	@echo 'Makefile for AI Critter                                                     '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
-	@echo '   make up                             Start birbcamm                     '
+	@echo '   make up                             Start ai-critter                     '
 	@echo '   make build                          Build the docker containers        '
 	@echo '   make create_db                      Create the modeldb                 '
 	@echo '                                                                          '
