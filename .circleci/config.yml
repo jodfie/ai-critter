@@ -1,13 +1,33 @@
 version: 2.1
-
-jobs:
-  build:
-    working_directory: /app
-    docker:
-      - image: docker:20.10-git
+commands:
+  setup:
     steps:
       - checkout
-      - setup_remote_docker
+      - run:
+          name: Setup buildx and qemu
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y qemu-user-static
+            sudo apt-get install -y binfmt-support
+      - run:
+          name: Check versions
+          command: |
+            qemu-aarch64-static --version
+            update-binfmts --version 
+      - run:
+          name: Create builder
+          command: |
+            export DOCKER_CLI_EXPERIMENTAL=enabled
+            docker buildx create --name arm-builder
+            docker buildx use arm-builder
+            docker buildx inspect --bootstrap
+jobs:
+  build:
+    machine:
+      image: 'ubuntu-2004:202010-01'
+    steps:
+      - setup
+      - checkout
       - run:
           name: Install dependencies
           command: |
@@ -18,18 +38,8 @@ jobs:
       - run:
           name: Build ai-critter-cam Docker image
           command: |
-            docker build  -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} ./camera-app
-            docker build  -t jodfie/ai-critter-cam:${CIRCLE_SHA1} ./camera-app
+            DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6  -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} --push ./camera-app
       - run:
           name: Build ai-critter-web Docker image
           command: |
-            docker build  -t jodfie/ai-critter-web:${CIRCLE_BRANCH} ./webapp/
-            docker build  -t jodfie/ai-critter-web:${CIRCLE_SHA1} ./webapp/
-      - deploy:
-          name: Push application Docker image
-          command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push "jodfie/ai-critter-web:${CIRCLE_BRANCH}"
-            docker push "jodfie/ai-critter-web:${CIRCLE_SHA1}"
-            docker push "jodfie/ai-critter-cam:${CIRCLE_BRANCH}"
-            docker push "jodfie/ai-critter-cam:${CIRCLE_SHA1}"
+            DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --platform linux/arm64  linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} --push ./camera-app
