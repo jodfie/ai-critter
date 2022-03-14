@@ -1,37 +1,35 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
 jobs:
   build:
-    docker: 
-      - image: python:3.9-bullseye
+    working_directory: /app
+    docker:
+      - image: docker:20.10-git
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
-          name: Install Apt Dependencies
+          name: Install dependencies
           command: |
-          apt-get install -y git libgl1-mesa-glx netcdf-bin libnetcdf-dev \
-libhdf5-dev libatlas-base-dev libhdf5-serial-dev
+            apk update && \
+            apk add  --upgrade --no-cache \
+              curl \
+              jq  
       - run:
-          name: Install Pip Dependencies
+          name: Build ai-critter-cam Docker image
           command: |
-          pip install --upgrade pip && \
-          pip install --upgrade cython
-       - run:
-          name: Adding Base Requirements.txt
+            docker build  -t changeme/ai-critter-cam:${CIRCLE_BRANCH} ./camera-app
+            docker build  -t changeme/ai-critter-cam:${CIRCLE_SHA1} ./camera-app
+      - run:
+          name: Build ai-critter-web Docker image
           command: |
-          ADD requirements.txt requirements.txt && \
-          RUN pip install -r requirements.txt
-       - run: 
-          name: Install NCS Dependencies
+            docker build  -t changeme/ai-critter-web:${CIRCLE_BRANCH} ./webapp/
+            docker build  -t changeme/ai-critter-web:${CIRCLE_SHA1} ./webapp/
+      - deploy:
+          name: Push application Docker image
           command: |
-          ADD requirements_ncs.txt requirements_ncs.txt && \
-RUN pip install -r requirements_ncs.txt
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  ai-critter:
-    jobs:
-      - ai-critter-camera
-      - ai-critter-web
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push "changeme/ai-critter-web:${CIRCLE_BRANCH}"
+            docker push "changeme/ai-critter-web:${CIRCLE_SHA1}"
+            docker push "changeme/ai-critter-cam:${CIRCLE_BRANCH}"
+            docker push "changeme/ai-critter-cam:${CIRCLE_SHA1}"
