@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Build ai-critter-cam Docker image
           command: |
-            DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6  -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} --push ./camera-app
+            DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6  -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} --push ./camera-app
       - run:
           name: Build ai-critter-web Docker image
           command: |
