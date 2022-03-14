@@ -2,7 +2,6 @@ version: 2.1
 commands:
   setup:
     steps:
-      - checkout
       - run:
           name: Setup buildx and qemu
           command: |
