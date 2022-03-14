@@ -2,25 +2,36 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+  build:
+    docker: 
+      - image: python:3.9-bullseye
     steps:
-      - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Install Apt Dependencies
+          command: |
+          apt-get install -y git libgl1-mesa-glx netcdf-bin libnetcdf-dev \
+libhdf5-dev libatlas-base-dev libhdf5-serial-dev
+      - run:
+          name: Install Pip Dependencies
+          command: |
+          pip install --upgrade pip && \
+          pip install --upgrade cython
+       - run:
+          name: Adding Base Requirements.txt
+          command: |
+          ADD requirements.txt requirements.txt && \
+          RUN pip install -r requirements.txt
+       - run: 
+          name: Install NCS Dependencies
+          command: |
+          ADD requirements_ncs.txt requirements_ncs.txt && \
+RUN pip install -r requirements_ncs.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  ai-critter:
     jobs:
-      - say-hello
+      - ai-critter-camera
+      - ai-critter-web
