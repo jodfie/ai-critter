@@ -18,18 +18,18 @@ jobs:
       - run:
           name: Build ai-critter-cam Docker image
           command: |
-            docker build  -t changeme/ai-critter-cam:${CIRCLE_BRANCH} ./camera-app
-            docker build  -t changeme/ai-critter-cam:${CIRCLE_SHA1} ./camera-app
+            docker build  -t jodfie/ai-critter-cam:${CIRCLE_BRANCH} ./camera-app
+            docker build  -t jodfie/ai-critter-cam:${CIRCLE_SHA1} ./camera-app
       - run:
           name: Build ai-critter-web Docker image
           command: |
-            docker build  -t changeme/ai-critter-web:${CIRCLE_BRANCH} ./webapp/
-            docker build  -t changeme/ai-critter-web:${CIRCLE_SHA1} ./webapp/
+            docker build  -t jodfie/ai-critter-web:${CIRCLE_BRANCH} ./webapp/
+            docker build  -t jodfie/ai-critter-web:${CIRCLE_SHA1} ./webapp/
       - deploy:
           name: Push application Docker image
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push "changeme/ai-critter-web:${CIRCLE_BRANCH}"
-            docker push "changeme/ai-critter-web:${CIRCLE_SHA1}"
-            docker push "changeme/ai-critter-cam:${CIRCLE_BRANCH}"
-            docker push "changeme/ai-critter-cam:${CIRCLE_SHA1}"
+            docker push "jodfie/ai-critter-web:${CIRCLE_BRANCH}"
+            docker push "jodfie/ai-critter-web:${CIRCLE_SHA1}"
+            docker push "jodfie/ai-critter-cam:${CIRCLE_BRANCH}"
+            docker push "jodfie/ai-critter-cam:${CIRCLE_SHA1}"
