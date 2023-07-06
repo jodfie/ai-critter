@@ -21,7 +21,7 @@ pyinaturalist==0.11.0
 pytest==6.2.1
 python-dateutil==2.8.1
 scikit-learn
-scipy==1.5.4
+scipy==1.10.0
 torch==1.13.1
 torchvision
 zipp==3.4.0
